@@ -295,4 +295,5 @@ map gc cd ~/.config
 map gE cd /etc
 map gsw cd ~/.config/sway
 map gd cd ~/.dotfiles
-
+map gr cd ~/repos
+map grc cd ~/repos/config/
