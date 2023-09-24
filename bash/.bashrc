@@ -66,7 +66,7 @@ esac
 # Safetynets
 # do not delete / or prompt if deleting more than 3 files at a time #
 alias rm='rm -I --preserve-root'
-alias ls='exa --all --long --icons --color=always --group-directories-first'
+alias ls='eza --all --long --icons --color=always --group-directories-first'
 alias se='sudoedit'
 # confirmation #
 alias mv='mv -i'
@@ -80,3 +80,5 @@ alias chgrp='chgrp --preserve-root'
 
 # reload bash config
 alias reload="source ~/.bashrc"
+eval "$(starship init bash)"
+
