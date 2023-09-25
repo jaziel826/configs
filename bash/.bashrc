@@ -2,7 +2,7 @@
 source ~/.bash_prompt
 
 # Source bash aliases
-source ~/.bash_aliases
+source ~/.bash_alias
 
 # Source bash functions
 source ~/.bash_functions
