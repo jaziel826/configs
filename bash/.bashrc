@@ -1,11 +1,11 @@
 # source bash prompt
-source ~/.bash/bash_prompt
+source ~/.bash_prompt
 
 # Source bash aliases
-source ~/.bash/bash_aliases
+source ~/.bash_aliases
 
 # Source bash functions
-source ~/.bash/bash_functions
+source ~/.bash_functions
 
 # Env
 export TERM=xterm-256color
@@ -20,19 +20,14 @@ if [ -t 0 ]; then
     fi
 fi
 
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        if [ -d "$dir" ]; then
-            if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
-            fi
-        fi
+if [ -t 0 ]; then
+    if type -p "starship" > /dev/null; then
+        eval "$(starship init bash)"
+    else
+        echo "Warning: starship was called, but it's not installed."
     fi
-}
+fi
+
 # Don't add duplicate lines or lines beginning with a space to the history
 HISTCONTROL=ignoreboth
 
@@ -80,5 +75,4 @@ alias chgrp='chgrp --preserve-root'
 
 # reload bash config
 alias reload="source ~/.bashrc"
-eval "$(starship init bash)"
 
