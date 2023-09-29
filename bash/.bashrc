@@ -12,13 +12,6 @@ export TERM=xterm-256color
 export EDITOR=vim
 
 # Show system information at login
-if [ -t 0 ]; then
-    if type -p "neofetch" > /dev/null; then
-        neofetch
-    else
-        echo "Warning: neofetch was called, but it's not installed."
-    fi
-fi
 
 if [ -t 0 ]; then
     if type -p "starship" > /dev/null; then
