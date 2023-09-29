@@ -9,7 +9,7 @@ source ~/.bash_functions
 
 # Env
 export TERM=xterm-256color
-export EDITOR=vim
+export EDITOR=nvim
 
 # Show system information at login
 
