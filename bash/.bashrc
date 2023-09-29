@@ -13,11 +13,6 @@ export EDITOR=nvim
 export GTK_USE_PORTAL=1
 
 # Show system information at login
-if command -v pfetch &> /dev/null; then
-    pfetch
-else
-    echo "pfetch is not installed. Please install it to use."
-fi
 
 if [ -t 0 ]; then
     if type -p "starship" > /dev/null; then

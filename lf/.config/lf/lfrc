@@ -248,25 +248,7 @@ cmd paste &{{
     lf -remote "send clear"
     lf -remote "send reload"
 }}
-copy_selected_file() {
-    # Check if an argument (the selected file) is provided
-    if [ -z "$1" ]; then
-        echo "No file selected."
-        return 1
-    fi
 
-    # Prompt the user for a name for the copied file
-    read -p "Enter a name for the copied file: " new_file_name
-
-    # Copy the selected file to the specified name
-    cp "$1" "$new_file_name"
-
-    if [ $? -eq 0 ]; then
-        echo "File copied successfully!"
-    else
-        echo "Error copying file."
-    fi
-}
 cmd lf-copy ${{
     # Check if an argument (the selected file) is provided
     if [ -z "$fx" ]; then
@@ -279,6 +261,7 @@ cmd lf-copy ${{
 
     # Copy the selected file to the specified name
     cp "$fx" "$new_file_name"
+    lf -remote "send reload"
 
     if [ $? -eq 0 ]; then
         echo "File copied successfully!"
