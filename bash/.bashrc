@@ -11,6 +11,7 @@ source ~/.bash_functions
 export TERM=xterm-256color
 export EDITOR=nvim
 export GTK_USE_PORTAL=1
+export MOZ_ENABLE_WAYLAND=1
 
 # Show system information at login
 
