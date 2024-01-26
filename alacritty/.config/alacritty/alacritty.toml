@@ -1,0 +1,123 @@
+import = ["/home/jaziel/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 12.0
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "P"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Space"
+mode = "~Search"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ToggleNormalSelection"
+key = "S"
+mode = "Vi|~Search"
+
+#[nord.bright]
+#black = "#4C566A"
+#blue = "#81A1C1"
+#cyan = "#8FBCBB"
+#green = "#A3BE8C"
+#magenta = "#B48EAD"
+#red = "#BF616A"
+#white = "#ECEFF4"
+#yellow = "#EBCB8B"
+
+#[nord.normal]
+#black = "#3B4252"
+#blue = "#81A1C1"
+#cyan = "#88C0D0"
+#green = "#A3BE8C"
+#magenta = "#B48EAD"
+#red = "#BF616A"
+#white = "#E5E9F0"
+#yellow = "#EBCB8B"
+#
+#[nord.primary]
+#background = "#2E3440"
+#foreground = "#D8DEE9"
+
+#[schemes.tokyo-night.bright]
+#black = "0x444b6a"
+#blue = "0x7da6ff"
+#cyan = "0x0db9d7"
+#green = "0xb9f27c"
+#magenta = "0xbb9af7"
+#red = "0xff7a93"
+#white = "0xacb0d0"
+#yellow = "0xff9e64"
+#
+#[schemes.tokyo-night.normal]
+#black = "0x32344a"
+#blue = "0x7aa2f7"
+#cyan = "0x449dab"
+#green = "0x9ece6a"
+#magenta = "0xad8ee6"
+#red = "0xf7768e"
+#white = "0x787c99"
+#yellow = "0xe0af68"
+#
+#[schemes.tokyo-night.primary]
+#background = "0x1a1b26"
+#foreground = "0xa9b1d6"
+#
+#[schemes.tokyo-night-storm.bright]
+#black = "0x444b6a"
+#blue = "0x7da6ff"
+#cyan = "0x0db9d7"
+#green = "0xb9f27c"
+#magenta = "0xbb9af7"
+#red = "0xff7a93"
+#white = "0xacb0d0"
+#yellow = "0xff9e64"
+#
+#[schemes.tokyo-night-storm.normal]
+#black = "0x32344a"
+#blue = "0x7aa2f7"
+#cyan = "0x449dab"
+#green = "0x9ece6a"
+#magenta = "0xad8ee6"
+#red = "0xf7768e"
+#white = "0x9699a8"
+#yellow = "0xe0af68"
+#
+#[schemes.tokyo-night-storm.primary]
+#background = "0x24283b"
+#foreground = "0xa9b1d6"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+decorations = "full"
+dynamic_padding = true
+dynamic_title = true
+opacity = 0.95
