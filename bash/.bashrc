@@ -9,7 +9,7 @@ source ~/.bash_functions
 
 # Env
 export TERM=xterm-256color
-export EDITOR=nvim
+#export EDITOR=nvim
 export GTK_USE_PORTAL=1
 export MOZ_ENABLE_WAYLAND=1
 
