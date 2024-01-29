@@ -78,6 +78,14 @@ programs.bash = {
     '';
   };
 
+xdg.userDirs = {
+	enable = true;
+	createDirectories = true;
+	desktop = "$HOME/desktop";
+	download = "$HOME/downloads";
+	
+	};
+
 programs.git = {
   enable = true;
   userName = "Jaziel Amadiz";
@@ -86,36 +94,36 @@ programs.git = {
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-      vim = {
-          recursive = true;
-          source = ../vim/.vim;
-          target = "/home/jaziel/.vim";
-        };
+#      vim = {
+#          recursive = true;
+#          source = ../vim/.vim;
+#          target = "/home/jaziel/.vim";
+#        };
       vimrc = {
           source = ../vim/.vimrc;
           target = "/home/jaziel/.vimrc";
        };
       tmux = {
-          source = /home/jaziel/repos/configs/tmux/.tmux.conf;
+          source = ../tmux/.tmux.conf;
           target = "/home/jaziel/.tmux.conf";
         };
       starship = {
-          source = /home/jaziel/repos/configs/starship/.config/starship.toml;
+          source = ../starship/.config/starship.toml;
           target = "/home/jaziel/.config/starship.toml";
         };
       lf = {
           recursive = true;
-          source = /home/jaziel/repos/configs/lf/.config/lf;
+          source = ../lf/.config/lf;
           target = "/home/jaziel/.config/lf";
         };
       alacritty = {
           recursive = true;
-          source = /home/jaziel/repos/configs/alacritty/.config/alacritty;
+          source = ../alacritty/.config/alacritty;
           target = "/home/jaziel/.config/alacritty";
         };
       btop = {
           recursive = true;
-          source = /home/jaziel/repos/configs/btop/.config/btop;
+          source = ../btop/.config/btop;
           target = "/home/jaziel/.config/btop";
         };
 #      .bashrc = {
