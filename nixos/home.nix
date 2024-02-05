@@ -6,6 +6,8 @@
   home.username = "jaziel";
   home.homeDirectory = "/home/jaziel";
   nixpkgs.config.allowUnfreePredicate = _: true;
+ # nixpkgs-unstable.config.allowUnfree = true;
+
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -16,13 +18,17 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  #systemd.service.kde-baloo.enable = false;
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
+  home.packages = with pkgs.unstable; [
   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   wget
   jetbrains-mono
   nerdfonts
+  catppuccin-kde
+  catppuccin-gtk
+  catppuccin-qt5ct
   gcc
   tmux
   bat
@@ -36,10 +42,13 @@
   fzf
   trash-cli
   dogdns
+  alacritty
+  firefox-bin
+  kate
   neovim
   btop
   brave
-  git
+  mullvad-browser
   stow 
   protonvpn-cli
   protonvpn-gui
@@ -74,7 +83,7 @@ programs.bash = {
     lob = "lobster";
     };
     bashrcExtra = ''
-      . ~/repos/config/bash/.bashrc
+      . ~/repos/configs/bash/.bashrc
     '';
   };
 

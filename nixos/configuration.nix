@@ -13,6 +13,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  #boot.loader.systemd-boot.configurationLimit = 12;
 
   boot.initrd.luks.devices."luks-164cbc37-fe46-4be4-9059-f6c1b4743e89".device = "/dev/disk/by-uuid/164cbc37-fe46-4be4-9059-f6c1b4743e89";
   networking.hostName = "ThinkPad"; # Define your hostname.
@@ -32,7 +33,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 1d";
   };
 # Enable Flakes 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -69,9 +70,23 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.settings.Wayland.SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.defaultSession = "plasmawayland";
+  #services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.desktopManager.gnome.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+  environment.variables.QT_QTA_PLATFORM = "wayland;xcb";
+#  environment.variables.QT_QPA_PLATFORMTHEME = "qt5ct";
+ # programs.dconf.enable = true;
+
+#  qt = {
+#  enable = true;
+#  platformTheme = "gnome";
+#  style = "adwaita-dark";
+#};
+
 
   # Configure keymap in X11
   services.xserver = {
@@ -113,17 +128,17 @@
     description = "Jaziel";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
-      kate
-      alacritty
+     firefox
+#       kate
+#       alacritty
       
     #  thunderbird
     ];
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "jaziel";
+  #services.xserver.displayManager.autoLogin.enable = true;
+  #services.xserver.displayManager.autoLogin.user = "jaziel";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
