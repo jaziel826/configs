@@ -319,4 +319,6 @@ map gE cd /etc
 map gsw cd ~/.config/sway
 map gd cd ~/.dotfiles
 map gr cd ~/repos
-map grc cd ~/repos/config/
+map gC cd ~/repos/configs/
+map gn cd ~/repos/configs/nixos
+

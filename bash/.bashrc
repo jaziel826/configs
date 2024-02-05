@@ -1,18 +1,20 @@
 # source bash prompt
-source ~/.bash_prompt
-
+if [ -f ~/.bash_prompt ]; then
+	source ~/.bash_prompt
+fi
 # Source bash aliases
-source ~/.bash_alias
-
+if [ -f ~/.bash_alias ]; then
+	source ~/.bash_alias
+fi
 # Source bash functions
-source ~/.bash_functions
-
+if [ -f ~/.bash_functions ]; then
+	source ~/.bash_functions
+fi
 # Env
 export TERM=xterm-256color
 #export EDITOR=nvim
-export GTK_USE_PORTAL=1
+# export GTK_USE_PORTAL=1
 export MOZ_ENABLE_WAYLAND=1
-
 # Show system information at login
 
 if [ -t 0 ]; then
