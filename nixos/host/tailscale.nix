@@ -28,7 +28,7 @@
       fi
 
       # otherwise authenticate with tailscale
-      ${tailscale}/bin/tailscale up --authkey tskey-auth-k6Fwrb6CNTRL-yLW2U2y2suJMgaY4hETiyJxPz8QsPA8R --ssh
+      ${tailscale}/bin/tailscale up --authkey  --ssh
     '';
   };
 
@@ -51,7 +51,7 @@
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
 
 #  sops.secrets.tailscale_key = {
-#    sopsFile = tskey-auth-k6Fwrb6CNTRL-yLW2U2y2suJMgaY4hETiyJxPz8QsPA8R;
+#    sopsFile = ;
 #  };
 
 #  environment.persistence = {
