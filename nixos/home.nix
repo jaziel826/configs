@@ -43,7 +43,8 @@
   trash-cli
   dogdns
   alacritty
-  firefox-bin
+  nodePackages_latest.npm
+#  firefox-bin
   kate
   neovim
   btop
@@ -52,6 +53,8 @@
   stow 
   protonvpn-cli
   protonvpn-gui
+  libsForQt5.plasma-browser-integration
+  # libsForQt5.kdeconnect-kde
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -76,7 +79,7 @@ programs.bash = {
     shellAliases = {
     ls = "exa --all --long --icons --color=always --group-directories-first";
     cat = "bat";
-    v = "vim ";
+    v = "$EDITOR ";
     pc = "protonvpn-cli connect";
     pr = "protonvpn-cli reconnect";
     zj = "zellij";
@@ -92,6 +95,7 @@ xdg.userDirs = {
 	createDirectories = true;
 	desktop = "$HOME/desktop";
 	download = "$HOME/downloads";
+  documents = "$HOME/documents";
 	
 	};
 
@@ -103,11 +107,11 @@ programs.git = {
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-#      vim = {
-#          recursive = true;
-#          source = ../vim/.vim;
-#          target = "/home/jaziel/.vim";
-#        };
+      vim = {
+          recursive = true;
+          source = ../vim/.vim;
+          target = "/home/jaziel/.vim";
+        };
       vimrc = {
           source = ../vim/.vimrc;
           target = "/home/jaziel/.vimrc";
@@ -166,7 +170,7 @@ programs.git = {
   #  /etc/profiles/per-user/jaziel/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
@@ -174,6 +178,7 @@ programs.git = {
     XDG_BIN_HOME = "$HOME/.local/bin"; 	# Not technically in the official xdg specification
     XDG_DESKTOP_DIR="$HOME/desktop";
     XDG_DOWNLOAD_DIR="$HOME/downloads";
+    XDG_DOCUMENTS_DIR="$HOME/documents";
 
 };
 
@@ -183,4 +188,5 @@ programs.git = {
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  home.enableNixpkgsReleaseCheck = false;
 }

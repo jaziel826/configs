@@ -7,16 +7,18 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware-configuration-devone.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.plymouth.enable = true; 
   #boot.loader.systemd-boot.configurationLimit = 12;
 
-  boot.initrd.luks.devices."luks-164cbc37-fe46-4be4-9059-f6c1b4743e89".device = "/dev/disk/by-uuid/164cbc37-fe46-4be4-9059-f6c1b4743e89";
-  networking.hostName = "ThinkPad"; # Define your hostname.
+  boot.initrd.luks.devices."luks-515df98e-91e6-4714-bc04-093adad99922".device = "/dev/disk/by-uuid/515df98e-91e6-4714-bc04-093adad99922";
+  #boot.initrd.luks.devices."luks-164cbc37-fe46-4be4-9059-f6c1b4743e89".device = "/dev/disk/by-uuid/164cbc37-fe46-4be4-9059-f6c1b4743e89";
+  networking.hostName = "devone"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
 
@@ -150,9 +152,9 @@
   environment.systemPackages = with pkgs; [
   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   wget
-#  jetbrains-mono
-#  nerdfonts
-#  corefonts
+  jetbrains-mono
+  nerdfonts
+  corefonts
   starship 
 #  steam
 #  thunderbird
@@ -167,6 +169,7 @@
   
   ];
 
+  programs.kdeconnect.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

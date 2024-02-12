@@ -28,7 +28,7 @@
       fi
 
       # otherwise authenticate with tailscale
-      ${tailscale}/bin/tailscale up --authkey  --ssh
+      ${tailscale}/bin/tailscale up --authkey ***REMOVED*** --ssh
     '';
   };
 

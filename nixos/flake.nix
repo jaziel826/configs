@@ -2,7 +2,7 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 #      impermanence.url = "github:nix-community/impermanence";
 
@@ -29,7 +29,7 @@
     in {
     
       nixosConfigurations = {
-        ThinkPad = lib.nixosSystem {
+        devone = lib.nixosSystem {
           inherit system;
           # specialArgs = {inherit inputs;};
           modules = [ 
