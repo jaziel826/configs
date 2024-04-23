@@ -4,6 +4,13 @@
 
 { config, pkgs, ... }:
 
+#  let
+#   nixos-load-src = pkgs.fetchFromGitHub {
+#     owner = "paulchambaz";
+#     repo = "nixos-plymouth";
+#   };
+#   nixos-load = pkgs.callPackage nixos-load-src {};
+# in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -13,8 +20,14 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.plymouth.enable = true; 
+  # boot.plymouth.enable = true; 
   #boot.loader.systemd-boot.configurationLimit = 12;
+  boot.plymouth = {
+    enable = true;
+     # themePackages = [ nixos-bgrt-plymouth];
+     theme = "bgrt";
+  };
+
 
   boot.initrd.luks.devices."luks-515df98e-91e6-4714-bc04-093adad99922".device = "/dev/disk/by-uuid/515df98e-91e6-4714-bc04-093adad99922";
   #boot.initrd.luks.devices."luks-164cbc37-fe46-4be4-9059-f6c1b4743e89".device = "/dev/disk/by-uuid/164cbc37-fe46-4be4-9059-f6c1b4743e89";
@@ -39,6 +52,22 @@
   };
 # Enable Flakes 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+# set uo auto-cpufreq 
+  # ---Snip---
+  programs.auto-cpufreq.enable = true;
+   # optionally, you can configure your auto-cpufreq settings, if you have any
+  programs.auto-cpufreq.settings = {
+   charger = {
+     governor = "performance";
+     turbo = "auto";
+   };
+
+   battery = {
+     governor = "powersave";
+     turbo = "auto";
+   };
+ };
+   # ---Snip---
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -47,6 +76,13 @@
   # Enable networking
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false;
+services.avahi = {
+  enable = true;
+  nssmdns4 = true;
+  openFirewall = true;
+};
+
+
   # enable tailscale 
   # services.tailscale.enable= true;  
 
@@ -73,12 +109,19 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.desktopManager.plasma6.enable = true;
+  # services.xserver.displayManager.defaultSession = "plasmawayland";
   #services.xserver.displayManager.gdm.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+  # xdg.portal.enable = true;
+  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+    ];
+  };
   environment.variables.QT_QTA_PLATFORM = "wayland;xcb";
 #  environment.variables.QT_QPA_PLATFORMTHEME = "qt5ct";
  # programs.dconf.enable = true;
@@ -91,9 +134,9 @@
 
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -139,23 +182,29 @@
   };
 
   # Enable automatic login for the user.
-  #services.xserver.displayManager.autoLogin.enable = true;
-  #services.xserver.displayManager.autoLogin.user = "jaziel";
+  # services.xserver.displayManager.autoLogin.enable = true;
+  # services.xserver.displayManager.autoLogin.user = "jaziel";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # enable Flatpak
   services.flatpak.enable = true;
+  fonts.fontDir.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   wget
+  hplip
+  nixos-bgrt-plymouth
+  libsForQt5.breeze-plymouth
+  libsForQt5.discover
   jetbrains-mono
   nerdfonts
   corefonts
-  starship 
+  starship
+  distrobox
 #  steam
 #  thunderbird
 #  bluez
@@ -188,6 +237,18 @@
   networking.firewall.allowedUDPPorts = [ 53317 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  virtualisation = {
+    podman = {
+      enable = true;
+
+      # Create a `docker` alias for podman, to use it as a drop-in replacement
+      dockerCompat = true;
+
+      # Required for containers under podman-compose to be able to talk to each other.
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

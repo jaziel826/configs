@@ -25,7 +25,7 @@
   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   wget
   jetbrains-mono
-  nerdfonts
+#  nerdfonts
   catppuccin-kde
   catppuccin-gtk
   catppuccin-qt5ct
@@ -36,16 +36,21 @@
   starship 
   steam
   thunderbird
+  traceroute
   tmux
   eza
   lf
   fzf
   trash-cli
+  onlyoffice-bin
+  inkscape
   dogdns
   alacritty
-  nodePackages_latest.npm
+#   nodePackages_latest.npm
 #  firefox-bin
   kate
+  # corefonts
+  # vistafonts
   neovim
   btop
   brave
@@ -72,7 +77,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
+fonts.fontconfig.enable = true;
 
 programs.bash = {
     enable = true;
@@ -84,6 +89,9 @@ programs.bash = {
     pr = "protonvpn-cli reconnect";
     zj = "zellij";
     lob = "lobster";
+    flake-up = "sudo nixos flake update";
+    nixos-new = "sudo nixos-rebuild switch --flake /home/jaziel/repos/configs/nixos/";
+    home-rebuild = "home-manager switch --flake /home/jaziel/repos/configs/nixos/";
     };
     bashrcExtra = ''
       . ~/repos/configs/bash/.bashrc

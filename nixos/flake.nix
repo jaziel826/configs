@@ -2,8 +2,13 @@
   description = "Nixos config flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/23.11";
+    auto-cpufreq = {
+    url = "github:AdnanHodzic/auto-cpufreq";
+    inputs.nixpkgs.follows = "nixpkgs-stable";
+};
 #      impermanence.url = "github:nix-community/impermanence";
 
     # home-manager = {
@@ -12,7 +17,7 @@
     # };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, auto-cpufreq, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -36,6 +41,7 @@
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./configuration.nix
             ./host
+            auto-cpufreq.nixosModules.default
             # inputs.home-manager.nixosModules.default
           ];
         };
