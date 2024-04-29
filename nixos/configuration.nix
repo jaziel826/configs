@@ -108,7 +108,7 @@ services.avahi = {
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   # services.xserver.displayManager.defaultSession = "plasmawayland";
   #services.xserver.displayManager.gdm.enable = true;
@@ -202,7 +202,7 @@ services.avahi = {
   libsForQt5.discover
   jetbrains-mono
   nerdfonts
-  corefonts
+  # corefonts
   starship
   distrobox
 #  steam

@@ -32,7 +32,7 @@
   gcc
   tmux
   bat
-  corefonts
+  # corefonts
   starship 
   steam
   thunderbird
@@ -50,7 +50,7 @@
 #  firefox-bin
   kate
   # corefonts
-  # vistafonts
+  vistafonts
   neovim
   btop
   brave
