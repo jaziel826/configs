@@ -27,6 +27,7 @@
   jetbrains-mono
 #  nerdfonts
   catppuccin-kde
+  yubikey-manager
   catppuccin-gtk
   catppuccin-qt5ct
   gcc
@@ -58,6 +59,7 @@
   stow 
   protonvpn-cli
   protonvpn-gui
+  yubikey-personalization
   libsForQt5.plasma-browser-integration
   # libsForQt5.kdeconnect-kde
     # # Adds the 'hello' command to your environment. It prints a friendly
