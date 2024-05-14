@@ -47,6 +47,7 @@
   inkscape
   dogdns
   alacritty
+  mission-center
 #   nodePackages_latest.npm
 #  firefox-bin
   kate

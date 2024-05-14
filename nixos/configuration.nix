@@ -48,7 +48,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 1d";
+    options = "--delete-older-than 7d";
   };
 # Enable Flakes 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -239,6 +239,7 @@ services.avahi = {
   libsForQt5.breeze-plymouth
   libsForQt5.discover
   # corefonts
+  nil
   starship
   distrobox
 #  steam
