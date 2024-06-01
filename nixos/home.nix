@@ -40,6 +40,8 @@
   traceroute
   tmux
   eza
+  #libsForQt5.partitionmanager
+  gparted
   lf
   fzf
   trash-cli
