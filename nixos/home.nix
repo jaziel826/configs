@@ -32,8 +32,10 @@
   catppuccin-qt5ct
   gcc
   tmux
+  electrum
   bat
-  # corefonts
+  winetricks
+  corefonts
   starship 
   steam
   thunderbird
@@ -53,7 +55,7 @@
 #   nodePackages_latest.npm
 #  firefox-bin
   kate
-  # corefonts
+  corefonts
   vistafonts
   neovim
   btop
