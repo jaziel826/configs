@@ -55,8 +55,8 @@
 #   nodePackages_latest.npm
 #  firefox-bin
   kate
-  corefonts
-  vistafonts
+  #corefonts
+  #vistafonts
   neovim
   btop
   brave
