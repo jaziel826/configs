@@ -150,7 +150,7 @@ services.avahi = {
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.ratbagd.enable = true;
   # Enable sound with pipewire.
-  sound.enable = true;
+  #sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
