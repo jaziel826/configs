@@ -29,8 +29,8 @@
   };
 
 
-  boot.initrd.luks.devices."luks-515df98e-91e6-4714-bc04-093adad99922".device = "/dev/disk/by-uuid/515df98e-91e6-4714-bc04-093adad99922";
-  #boot.initrd.luks.devices."luks-164cbc37-fe46-4be4-9059-f6c1b4743e89".device = "/dev/disk/by-uuid/164cbc37-fe46-4be4-9059-f6c1b4743e89";
+  #boot.initrd.luks.devices."luks-515df98e-91e6-4714-bc04-093adad99922".device = "/dev/disk/by-uuid/515df98e-91e6-4714-bc04-093adad99922";
+  boot.initrd.luks.devices."luks-164cbc37-fe46-4be4-9059-f6c1b4743e89".device = "/dev/disk/by-uuid/164cbc37-fe46-4be4-9059-f6c1b4743e89";
   networking.hostName = "ThinkPad"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -148,8 +148,7 @@ services.avahi = {
   # enable Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  
-
+  services.ratbagd.enable = true;
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -176,7 +175,7 @@ services.avahi = {
     description = "Jaziel";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-     firefox
+     #firefox
 #       kate
 #       alacritty
       
@@ -234,7 +233,7 @@ services.avahi = {
   environment.systemPackages = with pkgs; [
   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   wget
-  hplip
+ # hplip
   nixos-bgrt-plymouth
   libsForQt5.breeze-plymouth
   libsForQt5.discover
@@ -252,7 +251,8 @@ services.avahi = {
 #  brave
   git
   stow 
-  
+  usbutils
+  acpi
   ];
 
   programs.kdeconnect.enable = true;

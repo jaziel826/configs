@@ -32,10 +32,7 @@
   catppuccin-qt5ct
   gcc
   tmux
-  electrum
   bat
-  winetricks
-  corefonts
   starship 
   steam
   thunderbird
@@ -53,7 +50,7 @@
   alacritty
   mission-center
 #   nodePackages_latest.npm
-#  firefox-bin
+  firefox
   kate
   localsend
   #corefonts
