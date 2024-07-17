@@ -34,7 +34,7 @@
     in {
     
       nixosConfigurations = {
-        devone = lib.nixosSystem {
+        ThinkPad = lib.nixosSystem {
           inherit system;
           # specialArgs = {inherit inputs;};
           modules = [ 

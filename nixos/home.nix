@@ -55,6 +55,7 @@
 #   nodePackages_latest.npm
 #  firefox-bin
   kate
+  localsend
   #corefonts
   #vistafonts
   neovim
