@@ -1,10 +1,11 @@
 # interpreter for shell commands
 set shell sh
-set previewer ~/.config/lf/preview
+set previewer ~/.config/lf/preview.go
 #set cleaner ctpvclear
 #&ctpv -s $id
 #&ctpvquit $id
 # ~/.config/ranger/scope.sh
+set cleaner ~/.config/lf/cleaner.go
 set preview true
 set hidden true
 #set icons true
