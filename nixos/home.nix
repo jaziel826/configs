@@ -17,6 +17,14 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Breeze";
+      package = pkgs.libsForQt5.breeze-gtk;
+    };
+  };
+
 
   #systemd.service.kde-baloo.enable = false;
   # The home.packages option allows you to install Nix packages into your
@@ -28,10 +36,18 @@
 #  nerdfonts
   catppuccin-kde
   yubikey-manager
+  kitty
   catppuccin-gtk
+  pgadmin4-desktopmode
   catppuccin-qt5ct
   gcc
   tmux
+  poppler
+  jq
+  fd
+  ripgrep
+  zoxide
+  file
   bat
   starship 
   steam
@@ -58,8 +74,10 @@
   neovim
   btop
   brave
+  #yazi
   mullvad-browser
   stow 
+  libreoffice-qt6-fresh
   protonvpn-cli
   protonvpn-gui
   yubikey-personalization
@@ -100,6 +118,14 @@ programs.bash = {
     };
     bashrcExtra = ''
       . ~/repos/configs/bash/.bashrc
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
     '';
   };
 
@@ -111,6 +137,37 @@ xdg.userDirs = {
   documents = "$HOME/documents";
 	
 	};
+programs.yazi = {
+  enable = true;
+  settings = {
+    manager = {
+      sort_by = "natural";
+      show_hidden = true;
+      show_symlink = true;
+    };
+  keymap = {
+    prepend.manager.keymap = [
+      {
+      on = ["g" "n"];
+      run = "cd /home/jaziel/repos/configs/nixos";
+      desc = "Go to Nix config";
+      }
+    ];
+    completion.keymap = [
+      {
+        on = ["<Esc>"];
+        run = "close";
+        desc = "Cancel completion";
+      }
+      {
+        on = ["<Tab>"];
+        run = "close --submit";
+        desc = "Submit the completion";
+      }
+    ];
+};
+};
+};
 
 programs.git = {
   enable = true;
