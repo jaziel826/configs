@@ -7,7 +7,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/24.05";
     auto-cpufreq = {
     url = "github:AdnanHodzic/auto-cpufreq";
-    inputs.nixpkgs.follows = "nixpkgs-stable";
+    inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 #      impermanence.url = "github:nix-community/impermanence";
 

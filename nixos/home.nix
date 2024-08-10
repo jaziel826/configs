@@ -17,13 +17,13 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Breeze";
-      package = pkgs.libsForQt5.breeze-gtk;
-    };
-  };
+#  gtk = {
+#    enable = true;
+#    theme = {
+#      name = "Breeze";
+#      package = pkgs.libsForQt5.breeze-gtk;
+#    };
+#  };
 
 
   #systemd.service.kde-baloo.enable = false;
@@ -125,6 +125,7 @@ function yy() {
 		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
+	eval "$(zoxide init bash)"
 }
     '';
   };
