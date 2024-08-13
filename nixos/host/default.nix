@@ -9,5 +9,6 @@
   imports = [
     # ./impermanence.nix
     ./tailscale.nix
+    ./sops.nix
   ];
 }

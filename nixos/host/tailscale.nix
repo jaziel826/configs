@@ -28,7 +28,7 @@
       fi
 
       # otherwise authenticate with tailscale
-      ${tailscale}/bin/tailscale up --ssh --operator=jaziel --reset --accept-routes=true
+      ${tailscale}/bin/tailscale up --auth=${config.sops.secrets."tailscale-auth".path} --ssh --operator=jaziel --reset --accept-routes=true
     '';
   };
 
