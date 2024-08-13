@@ -14,7 +14,7 @@
         generateKey = true;
 
     secrets = {
-    tailscale_auth = {};
+    tailscale-auth = {};
       };
     };
   };

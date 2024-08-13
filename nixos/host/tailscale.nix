@@ -28,7 +28,7 @@
       fi
 
       # otherwise authenticate with tailscale
-      ${tailscale}/bin/tailscale up --auth=${config.sops.secrets."tailscale-auth".path} --ssh --operator=jaziel --reset --accept-routes=true
+      ${tailscale}/bin/tailscale up --auth= "cat ${config.sops.secrets."tailscale-auth".path}" --ssh --operator=jaziel --reset --accept-routes=true
     '';
   };
 
@@ -50,8 +50,8 @@
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
 
-  sops.secrets.tailscale-auth = {
-  };
+ # sops.secrets.tailscale-auth = {
+  #};
 
 #  environment.persistence = {
 #    "/persist".directories = ["/var/lib/tailscale"];
