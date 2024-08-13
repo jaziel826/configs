@@ -5,6 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/24.05";
+    sops-nix = {
+    url = "github:Mic92/sops-nix";
+    inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
     auto-cpufreq = {
     url = "github:AdnanHodzic/auto-cpufreq";
     inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -17,7 +21,7 @@
     # };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, auto-cpufreq,... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, auto-cpufreq, sops-nix,... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -42,6 +46,7 @@
             ./configuration.nix
             ./host
             auto-cpufreq.nixosModules.default
+	    sops-nix.nixosModules.sops
             # inputs.home-manager.nixosModules.default
           ];
         };
