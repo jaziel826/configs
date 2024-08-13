@@ -50,9 +50,9 @@
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
 
-#  sops.secrets.tailscale_key = {
-#    sopsFile = ;
-#  };
+  sops.secrets.tailscale-auth = {
+    sopsFile = ;
+  };
 
 #  environment.persistence = {
 #    "/persist".directories = ["/var/lib/tailscale"];
