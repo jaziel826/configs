@@ -45,8 +45,9 @@
           ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
             ./configuration.nix
             ./host
+            #./sops.nix
             auto-cpufreq.nixosModules.default
-	    sops-nix.nixosModules.sops
+            sops-nix.nixosModules.sops
             # inputs.home-manager.nixosModules.default
           ];
         };
