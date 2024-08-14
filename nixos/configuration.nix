@@ -37,10 +37,11 @@
   system.autoUpgrade = {
     enable = true;
     flake = inputs.self.outPath;
+    operation = "boot"
     flags = [
       "--update-input"
       "-L" # print build logs
-      "--commit-lock-file" # print build logs
+      "--commit-lock-file"
     ];
     dates = "02:00";
     randomizedDelaySec = "45min";
