@@ -1,22 +1,19 @@
-{ inputs, config, ...}:
+{ inputs, config, pkgs, ...}:
 {
-  imports = [
-    inputs.sops-nix.nixos.Modules.sops
-];
   sops = {
    
     defaultSopsFile = ../secrets.yaml;
-    validateSopsFile = false;
-  age = {
+    validateSopsFiles = false;
+    age = {
       # automatically import host SSH key
-    sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
-    keyFile = "/var/lib/sops-nix/key.txt";
-    generateKey = true;
+        sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+        keyFile = "/var/lib/sops-nix/key.txt";
+        generateKey = true;
 
       };
 
     secrets = {
-    tailscale-auth = {};
+      tailscale-auth = {};
     };
   };
 }

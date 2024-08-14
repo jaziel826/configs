@@ -31,7 +31,7 @@
       ${tailscale}/bin/tailscale up --auth-key $(cat ${config.sops.secrets."tailscale-auth".path}) --ssh --operator=jaziel --reset --accept-routes=true
     '';
   };
-
+#--auth-key $(cat ${config.sops.secrets."tailscale-auth".path})
   environment.systemPackages = with pkgs; [
     tailscale
   ];
@@ -50,8 +50,8 @@
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
   boot.kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
 
- # sops.secrets.tailscale-auth = {
-  #};
+  sops.secrets."tailscale-auth" = {
+  };
 
 #  environment.persistence = {
 #    "/persist".directories = ["/var/lib/tailscale"];
