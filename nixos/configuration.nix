@@ -34,18 +34,17 @@
   networking.hostName = "ThinkPad"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    operation = "boot"
-    flags = [
-      "--update-input"
-      "-L" # print build logs
-      "--commit-lock-file"
-    ];
-    dates = "02:00";
-    randomizedDelaySec = "45min";
-  };
+#  system.autoUpgrade = {
+#    enable = true;
+#    flake = "self.output";
+#    operation = "boot";
+#    flags = [
+#      "--commit-lock-file"
+#      "-L" 
+#    ];
+#    dates = "02:00";
+#    randomizedDelaySec = "45min";
+#  };
 
 ##create /persistent
 #
