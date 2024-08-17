@@ -43,6 +43,7 @@
   gcc
   tmux
   poppler
+  fastfetch
   jq
   fd
   ripgrep
@@ -107,12 +108,14 @@ programs.bash = {
     shellAliases = {
     ls = "exa --all --long --icons --color=always --group-directories-first";
     cat = "bat";
+    cd = "z";
+    cdi = "zi";
     v = "$EDITOR ";
     pc = "protonvpn-cli connect";
     pr = "protonvpn-cli reconnect";
     zj = "zellij";
     lob = "lobster";
-    flake-up = "sudo nixos flake update";
+    flake-up = "sudo nixos flake update --commit-lock-file";
     nixos-new = "sudo nixos-rebuild switch --flake /home/jaziel/repos/configs/nixos/";
     home-rebuild = "home-manager switch --flake /home/jaziel/repos/configs/nixos/";
     };
@@ -146,27 +149,27 @@ programs.yazi = {
       show_hidden = true;
       show_symlink = true;
     };
-  keymap = {
-    prepend.manager.keymap = [
-      {
-      on = ["g" "n"];
-      run = "cd /home/jaziel/repos/configs/nixos";
-      desc = "Go to Nix config";
-      }
-    ];
-    completion.keymap = [
-      {
-        on = ["<Esc>"];
-        run = "close";
-        desc = "Cancel completion";
-      }
-      {
-        on = ["<Tab>"];
-        run = "close --submit";
-        desc = "Submit the completion";
-      }
-    ];
-};
+#  keymap = {
+#    prepend.manager.keymap = [
+#      {
+#      on = ["g" "n"];
+#      run = "cd /home/jaziel/repos/configs/nixos";
+#      desc = "Go to Nix config";
+#      }
+#    ];
+#    completion.keymap = [
+#      {
+#        on = ["<Esc>"];
+#        run = "close";
+#        desc = "Cancel completion";
+#      }
+#      {
+#        on = ["<Tab>"];
+#        run = "close --submit";
+#        desc = "Submit the completion";
+#      }
+#    ];
+#};
 };
 };
 
@@ -241,7 +244,7 @@ programs.git = {
   #  /etc/profiles/per-user/jaziel/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "kate";
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";

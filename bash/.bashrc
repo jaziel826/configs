@@ -23,6 +23,11 @@ if [ -t 0 ]; then
     else
         echo "Warning: starship was called, but it's not installed."
     fi
+    if type -p "fastfetch" > /dev/null; then
+		fastfetch
+	else
+		echo "Warning festfetch was called, but it's not installed. SYSTEM COMPROMISED!"
+	fi
 fi
 
 # Don't add duplicate lines or lines beginning with a space to the history
